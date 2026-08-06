@@ -1,9 +1,21 @@
 ---
 name: skill-a-share-market-risk-radar
 description: A股市场风险雷达，从全球宏观、融资资金、指数估值、市场趋势、资金流向、板块轮动、个股事件和技术面进行全链路扫描，并输出红黄绿风险等级。用于用户请求A股市场环境分析、市场风险扫描、仓位风险判断、板块风格识别、个股风险检查、解禁或融资压力排查时；不用于承诺收益或替代投资决策。
+metadata:
+  organization: QuantSkills
+  organization_url: https://github.com/quantskills
+  repository: skill-a-share-market-risk-radar
+  repository_url: https://github.com/quantskills/skill-a-share-market-risk-radar
+  project_type: skill
+  collection: market-risk
+  type: quant
+  version: 1.0.1
+  license: GPL-3.0-only
 ---
 
 # A股市场风险雷达
+
+> QuantSkills 社区项目，由 GitHub 用户 `cikeqi` 维护。项目尚未经过独立审核，不代表 QuantSkills 官方认证，也不承诺收益或生产环境适用性。
 
 使用本 Skill 生成可解释的市场风险监测结果。把输出定位为风险预警与研究材料，不要把启发式阈值描述成已验证的 Alpha 因子。
 

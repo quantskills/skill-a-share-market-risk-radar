@@ -1,87 +1,41 @@
 # A股市场风险雷达
 
-A股市场风险监测 Skill，从全球宏观、融资资金、指数估值、市场趋势、资金流向、板块轮动、个股事件和技术面进行综合扫描，并输出红、黄、绿风险等级。
+简体中文 | [English](README.en.md)
 
-本项目用于风险预警和市场研究，不构成投资建议，也不承诺任何投资收益。
+> QuantSkills 社区项目，由 GitHub 用户 `cikeqi` 维护。项目尚未经过独立审核，不代表 QuantSkills 官方认证，也不承诺收益或生产环境适用性。
 
-## 功能
+这是一个面向 A 股市场的多维风险监测 Skill。它从全球宏观、融资资金、指数估值、市场趋势、资金流向、板块轮动、个股事件和技术面进行扫描，并输出可解释的红、黄、绿或未知风险等级。
 
-- 全球宏观环境扫描
-- A股市场整体风险判断
-- 资金流向与融资压力监测
-- 行业及板块轮动分析
-- 个股事件风险检查
-- 股票技术面风险预警
-- 限售股解禁压力检查
-- 市场预期差分析
-- 综合输出市场风险等级
-
-## 文件结构
-
-```text
-.
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-└── scripts/
-    ├── full_scan.py
-    ├── global_macro.py
-    ├── market_radar.py
-    ├── capital_flows.py
-    ├── sector_rotation.py
-    ├── stock_risk.py
-    ├── tech_alert.py
-    ├── margin_scan.py
-    ├── unlock_calendar.py
-    └── expectation_gap.py
-```
-
-各文件用途：
-
-- `SKILL.md`：Skill 的触发条件、使用流程和风险说明
-- `agents/openai.yaml`：Skill 展示名称和默认调用提示
-- `scripts/full_scan.py`：执行完整市场风险扫描
-- `scripts/global_macro.py`：扫描全球宏观环境
-- `scripts/market_radar.py`：分析A股市场整体风险
-- `scripts/capital_flows.py`：分析市场和个股资金流向
-- `scripts/sector_rotation.py`：分析行业及板块轮动
-- `scripts/stock_risk.py`：检查个股风险
-- `scripts/tech_alert.py`：生成技术面风险预警
-- `scripts/margin_scan.py`：扫描融资资金风险
-- `scripts/unlock_calendar.py`：检查限售股解禁压力
-- `scripts/expectation_gap.py`：分析市场预期差
+本项目用于风险预警和研究，不预测确定收益，也不替代投资决策。
 
 ## 环境要求
 
-需要 Python 3，并安装以下依赖：
+安装 Python 依赖：
 
-```bash
-pip install pandas numpy
+```text
+pandas
+numpy
+panda_data
 ```
 
-同时需要安装并配置 `panda_data`。
-
-## 凭证配置
-
-运行前设置 PandaData 环境变量：
+通过环境变量提供 PandaData 凭证：
 
 ```bash
-export PANDADATA_USERNAME="你的账号"
-export PANDADATA_PASSWORD="你的密码"
+export PANDADATA_USERNAME="..."
+export PANDADATA_PASSWORD="..."
 ```
 
-不要把账号、密码、Token 或其他敏感信息写入代码或上传到 GitHub。
+不得将真实账号、密码或 Token 写入代码、报告或 GitHub 仓库。
 
 ## 快速运行
 
-### 扫描整体市场风险
+完整市场扫描：
 
 ```bash
-python3 scripts/full_scan.py \
-  --out /tmp/a_share_market_risk.json
+python3 scripts/full_scan.py --out /tmp/a_share_market_risk.json
 ```
 
-### 扫描市场并加入指定股票
+完整扫描并加入指定股票：
 
 ```bash
 python3 scripts/full_scan.py \
@@ -91,91 +45,59 @@ python3 scripts/full_scan.py \
 
 ## 专项扫描
 
-### 全球宏观环境
-
 ```bash
 python3 scripts/global_macro.py
-```
-
-### A股市场风险
-
-```bash
 python3 scripts/market_radar.py
-```
-
-### 资金流向
-
-```bash
-python3 scripts/capital_flows.py \
-  --symbols 603501.SH 688808.SH
-```
-
-### 板块轮动
-
-```bash
+python3 scripts/capital_flows.py --symbols 603501.SH 688808.SH
 python3 scripts/sector_rotation.py
-```
-
-### 个股风险
-
-```bash
 python3 scripts/stock_risk.py 603501.SH
-```
-
-### 技术面预警
-
-```bash
 python3 scripts/tech_alert.py 603501.SH 688808.SH
+python3 scripts/margin_scan.py --symbols 603501.SH 688808.SH
+python3 scripts/unlock_calendar.py --symbols 603501.SH 688808.SH
+python3 scripts/expectation_gap.py --symbols 603501.SH 688808.SH
 ```
 
-### 融资资金风险
+## 可以直接问
 
-```bash
-python3 scripts/margin_scan.py \
-  --symbols 603501.SH 688808.SH
-```
-
-### 限售股解禁
-
-```bash
-python3 scripts/unlock_calendar.py \
-  --symbols 603501.SH 688808.SH
-```
-
-### 市场预期差
-
-```bash
-python3 scripts/expectation_gap.py \
-  --symbols 603501.SH 688808.SH
-```
+- 扫描当前 A 股市场风险，并总结最重要的预警信号。
+- 当前市场是高风险、需警惕还是相对稳定？请说明依据和数据缺口。
+- 检查融资资金、北向持仓和市场成交是否出现脆弱性。
+- 分析当前板块轮动、风格切换与拥挤风险。
+- 检查 `603501.SH` 和 `688808.SH` 的个股事件与技术面风险。
+- 查看未来 30 天限售股解禁压力较大的股票。
+- 检查指定股票的高估值、业绩预期和技术面风险是否共振。
 
 ## 风险等级
 
-| 等级 | 含义 |
-|---|---|
-| `RED` | 多个风险维度出现共振，需要降低风险暴露并进一步核查 |
-| `YELLOW` | 部分风险维度异常，需要控制仓位并持续观察 |
-| `GREEN` | 当前覆盖维度未发现明显风险共振，但不代表未来没有风险 |
-| `UNKNOWN` | 数据不足或接口调用失败，不能将其视为低风险 |
+- `RED`：多个风险维度共振，需要降低风险暴露并进一步核查。
+- `YELLOW`：部分维度异常，需要控制仓位并持续观察。
+- `GREEN`：当前已覆盖维度未发现显著共振，不代表未来没有风险。
+- `UNKNOWN`：数据不足或接口失败，不得当作低风险。
 
-## 输出说明
+## 文件结构
 
-报告通常包括：
+- `SKILL.md`：触发条件、工作流与风险边界。
+- `agents/`：Codex、Cursor、Hermes 和 OpenClaw 等运行时入口。
+- `scripts/full_scan.py`：完整市场风险扫描。
+- `scripts/global_macro.py`：全球宏观环境扫描。
+- `scripts/market_radar.py`：A 股市场风险雷达。
+- `scripts/capital_flows.py`：资金流向分析。
+- `scripts/sector_rotation.py`：板块轮动分析。
+- `scripts/stock_risk.py`：个股风险检查。
+- `scripts/tech_alert.py`：技术面风险预警。
+- `scripts/margin_scan.py`：融资脆弱性扫描。
+- `scripts/unlock_calendar.py`：限售股解禁检查。
+- `scripts/expectation_gap.py`：市场预期差分析。
 
-- 扫描时间
-- 市场总体风险等级
-- 主要风险触发信号
-- 指定股票的专项风险
-- 数据缺口和接口异常
-- 模型及方法限制
+## 数据来源、假设与限制
 
-分析时应明确区分观测事实与推断结果。
+- 数据来源：量化结论仅使用 PandaData。
+- 关键假设：各模块的经验阈值和风险信号可以用于风险监测，但尚未替代完整历史回测和样本外检验。
+- 已知限制：指数涨跌只能作为市场压力代理；接口权限、更新延迟和数据缺失可能导致不完整结果或 `UNKNOWN`。
+- 风险边界：输出仅供研究与教育，不构成投资建议、收益承诺、仓位指令或自动交易决策。
 
-## 使用限制
+## 维护与许可
 
-- 当前评分主要基于经验阈值和信号计数
-- 数据接口权限、数据延迟和数据缺失可能影响结果
-- 市场走势指标不等同于真实涨跌停家数
-- 扫描结果不能替代历史回测、样本外检验和人工研究
-- 不应根据单次扫描结果直接作出买卖决策
-- 所有输出仅供研究参考，不构成投资建议
+- 维护者：GitHub 用户 `cikeqi`
+- 仓库：`quantskills/skill-a-share-market-risk-radar`
+- 许可：[GNU GPL v3.0 only](LICENSE)（SPDX：`GPL-3.0-only`）
