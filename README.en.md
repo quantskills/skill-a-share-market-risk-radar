@@ -101,3 +101,6 @@ python3 scripts/expectation_gap.py --symbols 603501.SH 688808.SH
 - Maintainer: GitHub user `cikeqi`
 - Repository: `quantskills/skill-a-share-market-risk-radar`
 - License: [GNU GPL v3.0 only](LICENSE) (`GPL-3.0-only`)
+
+
+Pandadata compatibility maintenance: [abgyjaguo](https://github.com/abgyjaguo). Existing authorship is retained.
