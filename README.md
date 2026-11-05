@@ -101,3 +101,6 @@ python3 scripts/expectation_gap.py --symbols 603501.SH 688808.SH
 - 维护者：GitHub 用户 `cikeqi`
 - 仓库：`quantskills/skill-a-share-market-risk-radar`
 - 许可：[GNU GPL v3.0 only](LICENSE)（SPDX：`GPL-3.0-only`）
+
+
+Pandadata 兼容维护：[abgyjaguo](https://github.com/abgyjaguo)，保留原项目作者署名。

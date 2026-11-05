@@ -75,3 +75,7 @@ python3 scripts/expectation_gap.py --symbols 603501.SH 688808.SH
 - 市场走势模块使用指数涨跌作为市场压力代理，不等同于真实跌停家数。
 - 数据口径、接口权限和延迟可能产生 `UNKNOWN` 或不完整结果。
 - 不根据单次扫描直接给出买卖指令或收益承诺。
+
+## Pandadata compatibility
+
+[Pandadata 1.0.6 compatibility](references/pandadata-compatibility.md) — exact SDK baseline, validation scope, and shared guidance for all supported agent runtimes.
